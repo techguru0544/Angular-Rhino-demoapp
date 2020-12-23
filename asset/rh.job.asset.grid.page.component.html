@@ -1,0 +1,18 @@
+<div id="Demo-job-asset-grid-page" class="page-layout simple right-sidebar inner-scroll">
+  <!-- CENTER -->
+  <div class="center" fxFlex>
+    <Demo-job-asset-grid
+    #jobassetgrid
+    [page]="assetPage"
+    [rows]="assetRows"
+    [loadingIndicator]="assetLoadingIndicator"
+    [cache]="assetCache"
+    [waitingResponse]="waitingResponse"
+    (gridpage)="getJobAssetList($event)"
+    (sort)="assetSortCallback($event)"
+    (export)="exportToExcelData()"
+    [excelLoadingIndicator]="excelLoadingIndicator"
+    ></Demo-job-asset-grid>
+  </div>
+  <!-- / CENTER -->
+</div>

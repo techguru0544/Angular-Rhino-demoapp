@@ -1,0 +1,53 @@
+<div id="Demo-map-page">
+    <!-- CONTENT -->
+    <div #map class="map-section"></div>
+    <input id="pac-input" placeholder="Search" class="search-input"/>
+    <!-- / CONTENT -->
+
+   <div class="custom-paginations" *ngIf="totalPages > 1">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+        <li  class="page-item" (click)="selectPage(1, $event)"  [class.disabled]="currentPage == 1">
+          <a class="page-link arrow-link" href="" title="Go to first page">
+            <i class="material-icons">
+              first_page
+            </i>
+          </a>
+        </li>
+        <li class="page-item" (click)="selectPage(currentPage - 1, $event)"  [class.disabled]="currentPage == 1">
+          <a class="page-link arrow-link" href="" title="Go to previous page">
+            <i class="material-icons">keyboard_arrow_left</i>
+          </a>
+        </li>
+        
+        <!-- <li class="page-item" class="disabled" (click)="cancelEvent($event)" *ngIf="(currentPage - rangeNumber) > 1">
+          <a class="page-link" href="">...</a>
+        </li>
+       -->
+      
+        <li class="page-item" [class.active]="page == currentPage" *ngFor="let page of pages | async">
+          <a class="page-link" href="javascript:void(0)" (click)="selectPage(page, $event)">
+            {{page}}
+          </a>
+        </li>
+      
+        <!-- <li class="page-item" class="disabled" (click)="cancelEvent($event)" *ngIf="(currentPage + rangeNumber) < totalPages">
+          <a class="page-link" href="" >...</a>
+        </li> -->
+      
+        <li class="page-item" (click)="selectPage(currentPage + 1, $event)" [class.disabled]="currentPage == totalPages">
+          <a class="page-link arrow-link"  href="" title="Go to next page">
+            <i class="material-icons">keyboard_arrow_right</i>
+          </a>
+        </li>
+        <li class="page-item" (click)="selectPage(totalPages, $event)"  [class.disabled]="currentPage == totalPages">
+          <a class="page-link arrow-link" href="" title="Go to last page">
+            <i class="material-icons">
+              last_page
+            </i>
+          </a>
+        </li>
+        </ul>
+      </nav>
+   </div>
+</div>

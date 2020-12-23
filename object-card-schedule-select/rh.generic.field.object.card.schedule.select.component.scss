@@ -1,0 +1,51 @@
+.label-container {
+    span {
+        display: contents;
+        .mat-icon {
+            display: inline-block !important;
+            vertical-align: top;
+            margin-left: 5px;
+        }
+    }
+}
+
+.object-form-schedule-select {
+    .timer-icon {
+        svg {
+            top: 5px !important;
+        }
+    } 
+
+    .routine_calendar {
+        height: 40px !important;
+        width: 40px !important;
+        vertical-align: middle !important;
+        background-size: 40px;
+    }
+}
+
+.main-layout {
+    width: calc(100% - 175px);
+}
+
+.date_blocks{
+    width:30%;
+    display: inline-block;
+    .mat-form-field-wrapper{
+        padding-bottom:0;
+    }
+    @media (max-width:991px){
+        width:50%;
+        padding-bottom:15px;
+        margin-left:0!important;
+    }
+    @media (max-width:767px){
+        width:100%;
+        margin-left:0!important;
+       
+            .mat-form-field{
+                margin-left:0!important;
+            }
+        
+    }
+}

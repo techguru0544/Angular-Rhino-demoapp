@@ -1,0 +1,85 @@
+<!-- ATTENDANCE -->
+<div fxLayout="row wrap" fxLayoutGap="20px" class="form-object-container object-form-schedule-select mt-16 mr-0">
+    <div fxFlex="1 1 145px" class="label-container mt-16">
+        <label>Attendance Date</label>
+    </div>
+
+    <div fxFlex="1 1 auto">
+
+        <!-- Attendance Date -->
+        <div class="date_blocks">
+        <mat-form-field appearance="outline" class="date-time" [ngClass]="{'approval-required': unapprovedRequest?.value}"> 
+            <input
+                    #datepicker
+                    class="attendance-completion-date"
+                    [(ngModel)]="modelData.responseduedate"
+                    matInput [matDatepicker]="attendaceDate"
+                    placeholder="Date"
+                    [min]="minRespDate" [max]="maxRespDate"
+                    (click)="onFieldClicked();"
+                    (dateChange)="onResponseDueDateChange($event)"
+                    [readonly]="formControl?.status == 'DISABLED' || !isOpenForEditing()" [disabled]="formControl?.status == 'DISABLED' || !isOpenForEditing()"
+            />
+            <mat-datepicker-toggle  matSuffix [for]="attendaceDate"></mat-datepicker-toggle>
+            <mat-datepicker #attendaceDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="date_blocks">
+
+        <!-- Attendance Time -->
+        <mat-form-field appearance="outline" class="ml-20 date-time" [ngClass]="{'approval-required': unapprovedRequest?.value}">
+            <input matInput  [readonly]="formControl?.status == 'DISABLED' || !isOpenForEditing()" [disabled]="formControl?.status == 'DISABLED' || !isOpenForEditing()" [disableClick]="true" class="attendance-time" [ngModel]="modelData.responseduetime | DemoTime:modalOptions?.timeformat"
+                   [ngxTimepicker]="responseDueTime" [min]="getTime()" [format]="24" (ngModelChange)="modelData.responseduetime = $event" 
+                   placeholder="Time" readonly (click)="onFieldClicked();">
+            <ngx-material-timepicker-toggle class="timer-icon" matSuffix
+                                            [for]="responseDueTime"></ngx-material-timepicker-toggle>
+            <ngx-material-timepicker #responseDueTime></ngx-material-timepicker>
+        </mat-form-field>      
+    </div>
+    <div class="label-container ml-20 date_blocks">
+        <label (click)="openScheduleSelectModal()"  style="cursor:pointer;">
+            Select from calendar
+            <span>
+                <mat-icon mat-button class="routine_calendar"></mat-icon>
+            </span>
+        </label>
+    </div>
+    </div>
+
+</div>
+<!-- ATTENDANCE.END -->
+
+
+<!-- COMPLETION -->
+<div fxLayout="row wrap" fxLayoutGap="20px" class="form-object-container object-form-schedule-select mt-16 mr-0">
+    <div fxFlex="1 1 145px" class="label-container mt-16">
+        <label>Completion Date</label>
+    </div>
+
+    <div fxFlex="1 1 auto">
+        <div class="date_blocks">
+        <mat-form-field appearance="outline" class="date-time" [ngClass]="{'approval-required': unapprovedRequest?.value}">
+            <input readonly disabled
+                   class="completion-date" [min]="minCompDate" [max]="maxCompDate"
+                   [(ngModel)]="modelData.duedate" matInput
+                   [matDatepicker]="completionDate"
+                   placeholder="Date" (click)="onFieldClicked();">
+            <mat-datepicker-toggle matSuffix [for]="completionDate"></mat-datepicker-toggle>
+            <mat-datepicker #completionDate></mat-datepicker>
+        </mat-form-field>
+        </div>
+        <div class="date_blocks">
+        <mat-form-field appearance="outline" class="ml-20 date-time" [ngClass]="{'approval-required': unapprovedRequest?.value}">
+            <input  readonly disabled placeholder="Time" 
+                   matInput [disableClick]="true" class="completion-time" [ngModel]="modelData.duetime | DemoTime"
+                   [ngxTimepicker]="completionDueTime" [min]="getTime()" [format]="24" (ngModelChange)="modelData.duetime = $event" 
+                 readonly (click)="onFieldClicked();">
+            <ngx-material-timepicker-toggle class="timer-icon" matSuffix
+                                            [for]="completionDueTime"></ngx-material-timepicker-toggle>
+            <ngx-material-timepicker #completionDueTime></ngx-material-timepicker>
+        </mat-form-field>
+        </div>
+        
+    </div>
+</div>
+<!-- COMPLETION.END -->
